@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Denoising App</title>
+</head>
+<body>
+
+<h3>Upload an Image</h3>
+<form action="/autoencoder" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept="image/*">
+    <input type="submit" value="Denoise Image">
+</form>
+
+{% if original_filename and denoised_filename %}
+    <h3>Original and Denoised Images:</h3>
+    <img src="{{ url_for('static', filename=original_filename, v=cache_buster) }}" alt="Uploaded Image">
+    <img src="{{ url_for('static', filename=denoised_filename, v=cache_buster) }}" alt="Denoised Image">
+{% endif %}
+
+<div>
+    <a href="/">Back to Main Menu</a>
+</div>
+
+</body>
+</html>

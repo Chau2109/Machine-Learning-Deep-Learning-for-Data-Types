@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Classification App</title>
+</head>
+<body>
+
+<h3>Upload an Image</h3>
+<form action="/classification" method="post" enctype="multipart/form-data">
+    <input type="file" name="file" accept="image/*">
+    <input type="submit" value="Classify Image">
+</form>
+
+{% if label_name %}
+    <h3>Classification Result: {{ label_name }}</h3>
+{% endif %}
+
+{% if filename %}
+    <img src="{{ url_for('static', filename=filename, v=cache_buster) }}" alt="Uploaded Image">
+{% endif %}
+
+<div>
+    <a href="/">Back to Main Menu</a>
+</div>
+
+</body>
+</html>
